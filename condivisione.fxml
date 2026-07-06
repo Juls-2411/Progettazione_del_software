@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.org/javafx"
+            xmlns:fx="http://javafx.org/fxml"
+            fx:controller="com.example.gestioneafam.boundary.CondivisioneBoundary"
+            prefWidth="900" prefHeight="660">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="0" prefWidth="220">
+            <Button text="🔗 Condivisioni" styleClass="sidebar-link-active" onAction="#onTornaAllaDashboard"/>
+            <Button text="⬅ Torna alla Home" styleClass="sidebar-link" onAction="#onTornaAllaDashboard"/>
+            <VBox VBox.vgrow="ALWAYS"/>
+            <Button text="➜ LOGOUT" styleClass="logout-btn" maxWidth="Infinity" onAction="#onLogout"/>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="main-scroll">
+            <VBox styleClass="main-content" spacing="16">
+                <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+
+                <Label text="Gestione Condivisione" styleClass="title-label"/>
+
+                <VBox styleClass="card" spacing="10">
+                    <Label text="1. Seleziona i Contenuti da Condividere" styleClass="subtitle-label"/>
+                    <ListView fx:id="listaContenutiSelezionabili" prefHeight="160"/>
+
+                    <Label text="2. Imposta le Restrizioni di Accesso (opzionali)" styleClass="subtitle-label"/>
+                    <HBox spacing="20">
+                        <VBox spacing="4">
+                            <Label text="Scadenza" styleClass="subtitle-label"/>
+                            <DatePicker fx:id="dateScadenza"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Password (opzionale)" styleClass="subtitle-label"/>
+                            <PasswordField fx:id="txtPasswordLink" promptText="Password di protezione"/>
+                        </VBox>
+                    </HBox>
+
+                    <Label fx:id="lblEsitoCreazione" wrapText="true" managed="false" visible="false"/>
+                    <Button text="Genera Link di Condivisione Sicuro" styleClass="btn-primary" onAction="#onCreaLink"/>
+
+                    <VBox fx:id="boxLinkGenerato" spacing="6" visible="false" managed="false">
+                        <Label text="3. Link Generato" styleClass="subtitle-label"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label fx:id="lblLinkGenerato" styleClass="subtitle-label" wrapText="true"/>
+                            <Button text="Copia Link" styleClass="btn-secondary" onAction="#onCopiaLinkGenerato"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <Label text="I Miei Link di Condivisione" styleClass="title-label"/>
+                <TableView fx:id="tabellaLink" prefHeight="260"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

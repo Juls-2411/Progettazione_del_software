@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.org/javafx"
+           xmlns:fx="http://javafx.org/fxml"
+           fx:controller="com.example.gestioneafam.boundary.OtpBoundary"
+           prefWidth="400" prefHeight="420">
+
+    <VBox styleClass="card" alignment="CENTER" spacing="10" maxWidth="320">
+        <padding><Insets top="10" bottom="10" left="10" right="10"/></padding>
+
+        <ImageView fitWidth="130" preserveRatio="true">
+            <Image url="@../../../../images/logo.png"/>
+        </ImageView>
+
+        <Label text="Verifica di Sicurezza" styleClass="title-label"/>
+        <Label text="Abbiamo inviato un codice OTP alla tua casella email istituzionale (vedi console)."
+               styleClass="subtitle-label" wrapText="true" textAlignment="CENTER"/>
+
+        <Label fx:id="lblErrore" styleClass="error-label" wrapText="true" managed="false" visible="false"/>
+
+        <TextField fx:id="txtCodiceOtp" promptText="Inserisci OTP" styleClass="text-field" maxWidth="200"/>
+
+        <Button text="VERIFICA E ACCEDI" styleClass="btn-primary" maxWidth="Infinity"
+                onAction="#onVerifica" defaultButton="true"/>
+
+        <Button text="Annulla e torna al Login" styleClass="btn-secondary" onAction="#onAnnulla"/>
+    </VBox>
+</StackPane>

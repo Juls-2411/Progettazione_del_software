@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.org/javafx"
+            xmlns:fx="http://javafx.org/fxml"
+            fx:controller="com.example.gestioneafam.boundary.SezionePubblicaBoundary"
+            prefWidth="900" prefHeight="580">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="0" prefWidth="220">
+            <Button text="🌐 Sezione Pubblica" styleClass="sidebar-link-active" onAction="#onTornaAllaDashboard"/>
+            <Button text="⬅ Torna alla Home" styleClass="sidebar-link" onAction="#onTornaAllaDashboard"/>
+            <VBox VBox.vgrow="ALWAYS"/>
+            <Button text="➜ LOGOUT" styleClass="logout-btn" maxWidth="Infinity" onAction="#onLogout"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="main-content" spacing="14">
+            <padding><Insets top="20" right="24" bottom="20" left="24"/></padding>
+            <Label text="Sezione Pubblica del Nodo" styleClass="title-label"/>
+            <Label text="Contenuti che gli studenti del nodo hanno scelto di rendere pubblici." styleClass="subtitle-label"/>
+            <HBox spacing="10">
+                <TextField fx:id="txtFiltro" promptText="Cerca per titolo o studente..." HBox.hgrow="ALWAYS"/>
+                <Button text="Cerca" styleClass="btn-primary" onAction="#onFiltra"/>
+            </HBox>
+            <TableView fx:id="tabellaPubblici" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </center>
+</BorderPane>

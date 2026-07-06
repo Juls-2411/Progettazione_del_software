@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.org/javafx"
+            xmlns:fx="http://javafx.org/fxml"
+            fx:controller="com.example.gestioneafam.boundary.DashboardBoundary"
+            prefWidth="800" prefHeight="520">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="0" prefWidth="220">
+            <Button text="👤 Profilo" styleClass="sidebar-link" onAction="#onProfilo"/>
+            <Button text="📄 Contenuti" styleClass="sidebar-link" onAction="#onContenuti"/>
+            <Button text="🔗 Condivisioni" styleClass="sidebar-link" onAction="#onCondivisioni"/>
+            <Button text="🌐 Sezione Pubblica" styleClass="sidebar-link" onAction="#onSezionePubblica"/>
+            <Button text="📈 Riscontri" styleClass="sidebar-link" onAction="#onRiscontri"/>
+            <Button text="🏢 Rete AFAM" styleClass="sidebar-link" onAction="#onReteAfam"/>
+            <VBox VBox.vgrow="ALWAYS"/>
+            <Button text="➜ LOGOUT" styleClass="logout-btn" maxWidth="Infinity" onAction="#onLogout"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="main-content" spacing="12">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+            <Label fx:id="lblBenvenuto" text="Benvenuta/o nel tuo portale AFAM" styleClass="title-label"/>
+            <Label fx:id="lblContenuto"
+                   text="Seleziona una voce dal menu laterale per gestire le tue attivita'."
+                   styleClass="subtitle-label" wrapText="true"/>
+        </VBox>
+    </center>
+</BorderPane>

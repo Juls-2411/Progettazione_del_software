@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.org/javafx"
+            xmlns:fx="http://javafx.org/fxml"
+            fx:controller="com.example.gestioneafam.boundary.ReteAfamBoundary"
+            prefWidth="900" prefHeight="600">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="0" prefWidth="220">
+            <Button text="🏢 Rete AFAM" styleClass="sidebar-link-active" onAction="#onTornaAllaDashboard"/>
+            <Button text="⬅ Torna alla Home" styleClass="sidebar-link" onAction="#onTornaAllaDashboard"/>
+            <VBox VBox.vgrow="ALWAYS"/>
+            <Button text="➜ LOGOUT" styleClass="logout-btn" maxWidth="Infinity" onAction="#onLogout"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="main-content" spacing="16">
+            <padding><Insets top="20" right="24" bottom="20" left="24"/></padding>
+
+            <Label text="Rete AFAM (requisito opzionale)" styleClass="title-label"/>
+            <Label text="In questo prototipo mono-nodo la rete condivisa tra istituzioni AFAM e' simulata cercando tra gli account registrati sullo stesso nodo, a scopo dimostrativo."
+                   styleClass="subtitle-label" wrapText="true"/>
+
+            <VBox styleClass="card" spacing="8">
+                <Label text="Consenso alla Condivisione Esterna" styleClass="subtitle-label"/>
+                <CheckBox fx:id="chkConsenso" text="Rendi il mio profilo consultabile dagli altri nodi AFAM"/>
+                <Label fx:id="lblStatoConsenso" styleClass="subtitle-label" wrapText="true"/>
+                <Label fx:id="lblEsito" wrapText="true" managed="false" visible="false"/>
+                <Button text="Salva Consenso" styleClass="btn-primary" onAction="#onSalvaConsenso"/>
+            </VBox>
+
+            <VBox styleClass="card" spacing="8" VBox.vgrow="ALWAYS">
+                <Label text="Cerca Profili nella Rete AFAM" styleClass="subtitle-label"/>
+                <HBox spacing="10">
+                    <TextField fx:id="txtFiltro" promptText="Nome o cognome" HBox.hgrow="ALWAYS"/>
+                    <Button text="Cerca" styleClass="btn-primary" onAction="#onCerca"/>
+                </HBox>
+                <HBox spacing="14" VBox.vgrow="ALWAYS">
+                    <ListView fx:id="listaRisultati" prefWidth="260" HBox.hgrow="NEVER"/>
+                    <VBox styleClass="card" spacing="6" HBox.hgrow="ALWAYS">
+                        <Label fx:id="lblDettaglioNome" text="Seleziona un profilo dai risultati per consultarlo in sola lettura."
+                               styleClass="subtitle-label" wrapText="true"/>
+                        <Label fx:id="lblDettaglioCurriculum" styleClass="subtitle-label" wrapText="true"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

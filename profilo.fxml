@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.org/javafx"
+            xmlns:fx="http://javafx.org/fxml"
+            fx:controller="com.example.gestioneafam.boundary.ProfiloBoundary"
+            prefWidth="860" prefHeight="620">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="0" prefWidth="220">
+            <Button text="👤 Profilo" styleClass="sidebar-link-active" onAction="#onTornaAllaDashboard" prefHeight="45" maxWidth="Infinity"/>
+            <Button text="⬅ Torna alla Home" styleClass="sidebar-link" onAction="#onTornaAllaDashboard" prefHeight="45" maxWidth="Infinity"/>
+            <VBox VBox.vgrow="ALWAYS"/>
+            <Button text="➜ LOGOUT" styleClass="logout-btn" maxWidth="Infinity" prefHeight="45" onAction="#onLogout"/>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="main-scroll">
+            <VBox styleClass="main-content" spacing="18">
+                <padding><Insets top="20" right="30" bottom="30" left="30"/></padding>
+
+                <Label text="Il Mio Profilo" styleClass="title-label"/>
+
+                <!-- Card: dati anagrafici e immagine -->
+                <VBox styleClass="card" spacing="10">
+                    <HBox spacing="20">
+                        <VBox alignment="CENTER" spacing="8">
+                            <ImageView fx:id="imgProfilo" fitWidth="110" fitHeight="110" preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/utente.jpg" />
+                                </image>
+                            </ImageView>
+                            <Button text="Cambia Immagine" styleClass="btn-secondary" onAction="#onCambiaImmagine" prefWidth="140" prefHeight="35" style="-fx-padding: 5 10;"/>
+                        </VBox>
+                        <VBox spacing="8" HBox.hgrow="ALWAYS">
+                            <HBox spacing="10">
+                                <TextField fx:id="txtNome" promptText="Nome" styleClass="text-field" HBox.hgrow="ALWAYS"/>
+                                <TextField fx:id="txtCognome" promptText="Cognome" styleClass="text-field" HBox.hgrow="ALWAYS"/>
+                            </HBox>
+                            <HBox spacing="10">
+                                <TextField fx:id="txtEmail" promptText="Email" styleClass="text-field" editable="false" HBox.hgrow="ALWAYS"/>
+                                <TextField fx:id="txtCodiceFiscale" promptText="Codice Fiscale" styleClass="text-field" editable="false" HBox.hgrow="ALWAYS"/>
+                            </HBox>
+                            <HBox spacing="10">
+                                <TextField fx:id="txtIndirizzo" promptText="Indirizzo" styleClass="text-field" HBox.hgrow="ALWAYS"/>
+                                <TextField fx:id="txtRecapito" promptText="Recapito telefonico" styleClass="text-field" HBox.hgrow="ALWAYS"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+                    <Separator/>
+
+                    <Label text="Curriculum Vitae (PDF, DSAN)" styleClass="subtitle-label"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lblCurriculum" text="Nessun curriculum caricato" styleClass="subtitle-label" wrapText="true"/>
+                        <Button text="Scegli File..." styleClass="btn-secondary" onAction="#onScegliCurriculum" prefWidth="120" prefHeight="35" style="-fx-padding: 5 10;"/>
+                    </HBox>
+
+                    <Label fx:id="lblEsitoDati" wrapText="true" managed="false" visible="false"/>
+                    <!-- Modificato: Aumentata la larghezza, l'altezza e aggiunto padding interno -->
+                    <Button text="Salva Modifiche" styleClass="btn-primary" onAction="#onSalvaDatiAnagrafici" prefWidth="180" prefHeight="40" style="-fx-padding: 8 15;"/>
+                </VBox>
+
+                <!-- Card: modifica password -->
+                <VBox styleClass="card" spacing="10">
+                    <Label text="Modifica Password" styleClass="subtitle-label"/>
+                    <PasswordField fx:id="txtPasswordAttuale" promptText="Password attuale" styleClass="password-field"/>
+                    <PasswordField fx:id="txtNuovaPassword" promptText="Nuova password" styleClass="password-field"/>
+                    <PasswordField fx:id="txtConfermaPassword" promptText="Conferma nuova password" styleClass="password-field"/>
+                    <Label fx:id="lblEsitoPassword" wrapText="true" managed="false" visible="false"/>
+                    <!-- Modificato: Aumentata la larghezza, l'altezza e aggiunto padding interno -->
+                    <Button text="Aggiorna Password" styleClass="btn-primary" onAction="#onAggiornaPassword" prefWidth="180" prefHeight="40" style="-fx-padding: 8 15;"/>
+                </VBox>
+
+                <!-- Card: zona pericolosa -->
+                <VBox styleClass="card-danger" spacing="10">
+                    <Label text="Elimina Account" styleClass="subtitle-label"/>
+                    <Label text="L'eliminazione dell'account e' definitiva: profilo, contenuti e link di condivisione andranno persi in modo permanente."
+                           styleClass="subtitle-label" wrapText="true"/>
+                    <!-- Modificato: Aumentata la larghezza e l'altezza -->
+                    <Button text="Elimina Definitivamente il mio Account" styleClass="btn-danger" onAction="#onEliminaAccount" prefWidth="280" prefHeight="40" style="-fx-padding: 8 15;"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
